@@ -9,7 +9,7 @@ export const getUsersForSidebar = async (req, res) => {
     // get all users from db except the very current user
     const filteredUsers = await User.find({_id: {$ne:loggedInUserID}}).select("-password");
 
-    res.status(200).json({filteredUsers});
+    res.status(200).json(filteredUsers);
     
   } catch (error) {
     console.error(`Error in getUsersForSider: ${error.message}`);
@@ -19,7 +19,7 @@ export const getUsersForSidebar = async (req, res) => {
 
 export const getMessages = async (req, res) => {
   try {
-    const {user2ChatID} = req.params;
+    const {id:user2ChatID} = req.params;
     const meID = req.user._id;
 
     const messages = await Message.find(
@@ -42,7 +42,7 @@ export const getMessages = async (req, res) => {
 export const sendMessage = async (req, res) => {
   try {
     const {text, image} = req.body;
-    const {user2ChatID} = req.params;
+    const {id:user2ChatID} = req.params;
     const meID = req.user._id;
 
     let imageURL;
