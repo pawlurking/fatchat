@@ -9,8 +9,8 @@ const Sidebar = () => {
   const [showOnlineOnly, setShowOnlineOnly] = useState(false);
 
 
-  const onlineUsers =  [];
-  // const { onlineUsers } = useAuthStore();
+  // const onlineUsers =  [];
+  const { onlineUsers } = useAuthStore();
 
   const filteredUsers = showOnlineOnly
     ? users.filter((user) => onlineUsers.includes(user._id))
