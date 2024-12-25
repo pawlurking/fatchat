@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {useAuthStore} from '../store/useAuthStore.js';
+import { useAuthStore } from '../store/useAuthStore.js';
 import { MessageSquare, User, Mail, Lock, Eye, EyeOff, Loader2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import AuthImagePattern from "../components/AuthImagePattern";
@@ -15,14 +15,14 @@ const SignUpPage = () => {
     }
   );
 
-  const {signup, isSigningUp } = useAuthStore();
+  const { signup, isSigningUp } = useAuthStore();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const success = validateForm();
 
-    if (success===true) signup(formData);
+    if (success === true) signup(formData);
   };
 
   const validateForm = () => {
@@ -44,10 +44,10 @@ const SignUpPage = () => {
           <div className="text-center mb-8">
             <div className="flex flex-col items-center gap-2 group">
               <div className="size-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                <MessageSquare className="size-6 text-primary"/>
+                <MessageSquare className="size-6 text-primary" />
               </div>
               <h1 className="text-2xl font-bold mt-2">Create Account</h1>
-              <p className="text-base-content/60">Get started with your free account</p>
+              <p className="text-base-content/60">Sign up to connect with your friends</p>
             </div>
           </div>
 
@@ -69,7 +69,7 @@ const SignUpPage = () => {
                   className={`input input-bordered w-full pl-10`}
                   placeholder='John Doe'
                   value={formData.fullname}
-                  onChange={(e) => setFormData({...formData, fullname: e.target.value})}
+                  onChange={(e) => setFormData({ ...formData, fullname: e.target.value })}
                 />
               </div>
             </div>
@@ -144,14 +144,14 @@ const SignUpPage = () => {
               </Link>
             </p>
           </div>
-          
+
         </div>
       </div>
 
       {/* right side */}
       <AuthImagePattern
         title="Join our community"
-        subtitle="Connect with friends, share moments, and stay in touch with your loved ones."
+        subtitle="Connect with friends, share moments, and stay in touch with your beloved ones."
       />
     </div>
   )

@@ -1,10 +1,12 @@
-# FatChat - a responsive real-time chat application
+# This is FatChat
+
+a responsive real-time chatting application using ReactJS, Express, Socket.io, Zustand, MongoDB, Cloudinary
 
 ### what & how user & text data is stored
 
-<img src="mongo-stores.svg" alt="Landscape" />
+<img src="./assets/mongo-stores.svg" alt="Landscape" />
 
-<img src="signup-logic.svg" alt="Landscape" />
+<img src="./assets/signup-logic.svg" alt="Landscape" />
 
 #### I2I (Issues & To-Improves)
 
