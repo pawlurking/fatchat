@@ -13,9 +13,13 @@ import {Toaster} from "react-hot-toast";
 
 const App = () => {
   // fetch("http://localhost:5001/api/auth/check")
-  const {authUser, checkAuth, isCheckingAuth} = useAuthStore()
+  const {authUser, checkAuth, isCheckingAuth, onlineUsers} = useAuthStore()
+
+  console.log({onlineUsers});
 
   const {theme} = useThemeStore()
+
+  // in dev, every useEffect run twice
   useEffect(() => {
     checkAuth();
   }, [checkAuth]);

@@ -1,6 +1,8 @@
 import cloudinary from '../lib/cloudinary.js';
+import { getReceiverSocketID } from '../lib/socket.js';
 import Message from '../models/message.model.js';
 import User from '../models/user.model.js';
+import { io } from '../lib/socket.js';
 
 export const getUsersForSidebar = async (req, res) => {
   try {
@@ -61,10 +63,17 @@ export const sendMessage = async (req, res) => {
       }
     )
 
-    // send the new message
+    // send the new message (aka, save to db)
     await newMessage.save();
 
     // to-do: realtime functionality goes here => socket.io
+    // socket.io push the saved message to target client (no need to reload to get the new message from db)
+    const receiverSocketID = getReceiverSocketID(user2ChatID);
+    if (receiverSocketID) {
+      // io.emit(): this will broadcast to everyone
+      // because this is one-to-one chat, we emit to the only target socketID
+      io.to(receiverSocketID).emit("newMessage", newMessage)
+    }
 
     res.status(201).json(newMessage);
 
